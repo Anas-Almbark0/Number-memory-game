@@ -1,0 +1,77 @@
+.main-content {
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  overflow: hidden;
+}
+.main-content .empty-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-content .empty-data:has(~ .table-players tbody:not(:empty)) {
+  display: none;
+}
+.main-content .empty-data span {
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: var(--prim-color);
+}
+.table-players::-webkit-scrollbar {
+  width: 4px;
+}
+.table-players {
+  height: 50vh;
+  overflow-y: auto;
+}
+.table-players table {
+  width: 100%;
+  text-align: center;
+  color: var(--main-text-color);
+  font-size: 18px;
+}
+.table-players table thead th {
+  font-size: 20px;
+  padding: 20px 0;
+  background-color: var(--prim-color);
+  color: var(--main-text-color);
+  border-bottom: 2px solid var(--main-text-color);
+}
+.table-players table tbody tr td {
+  padding: 20px 0;
+  border-bottom: 2px solid var(--main-text-color);
+}
+.table-players:has(tbody:empty) {
+  display: none;
+}
+.charts-players:has(> .hasData) {
+  background-color: var(--opacity-colorBg);
+  margin: 40px 0 20px;
+  padding: 30px 0;
+}
+.charts-players:not(:has(> .hasData)) {
+  display: none;
+}
+.charts-players canvas {
+  width: 100%;
+  margin: 50px;
+  max-height: 40vh;
+}
+
+.charts-players canvas:last-of-type {
+  padding: 20px 0;
+  border-top: 10px solid var(--opacity-colorBg);
+}
+
+@media screen and (max-width: 500px) {
+  .main-content {
+    padding: 10px;
+  }
+  .table-players
+    table
+    :where(thead, tbody)
+    :where(th:is(.displayed-mobile), td:is(.displayed-mobile)) {
+    display: none;
+  }
+}
